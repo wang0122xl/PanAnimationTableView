@@ -92,6 +92,7 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
+        mainTableView.settingInfo.stretchType = .StretchEqual
         mainTableView.settingInfo.followAnimationType = .FollowAndStretch
     }
     
@@ -106,6 +107,7 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
+        mainTableView.settingInfo.stretchType = .StretchSameRate
         mainTableView.settingInfo.followAnimationType = .HoldAndStretch
     }
     

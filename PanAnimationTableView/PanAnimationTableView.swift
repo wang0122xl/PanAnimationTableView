@@ -16,7 +16,7 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     private var topViewHeight:CGFloat!
     private var originWidth:CGFloat! = 0
     private var originHeight:CGFloat! = 0
-        
+    
     /// 滚动到topView的最下部分时调用
     var reachbottomClosure:PanTableViewReachTopViewBottomClosure!
     
@@ -35,28 +35,33 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
             originHeight = topView?.frame.height
             
             self.insertSubview(topView!, atIndex: 0)
+            settingInfo.headerViewActualHeight = originHeight - settingInfo.headerViewHiddenHeight*2.0
         }
     }
     
     /**
      *  页面设置信息
      */
-     struct SwipAnimationViewInfo { //通过设置settingInfo的隐藏高度和显示高度来最终确定topView的height , 直接设置topView的frame , frame的y和height无效
+    struct SwipAnimationViewInfo {
         /// 上方headerView上下隐藏部分高度
         var headerViewHiddenHeight:CGFloat = 40
         
         /// 上方headerView的露出的实际显示高度
-        var headerViewActualHeight:CGFloat = 150
+        var headerViewActualHeight:CGFloat = 60
+        
+        /// 上方headerView随滚动旋转的最大角度 (0 ~ 90度)(对应值为0 ~ 1)
+        var headerViewRotateMaxRadious:Double = M_PI_2
+        
         
         /// 上部页面跟随下部页面的动画方式
         var followAnimationType:TopViewAnimationType = .HoldAndStretch
         
-        var stretchType:StretchType = .SameRate
+        var stretchType:StretchType = .StretchSameRate
     }
     
     /**
-    *  页面滑动时 , 上部画面的动画
-    */
+     *  页面滑动时 , 上部画面的动画
+     */
     enum TopViewAnimationType {
         /**
          *  页面滑动时 , 上部画面保持原位
@@ -65,7 +70,7 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
         /**
          *  页面滑动时 , 上部画面保持原位 , 并且到最顶部时有拉伸动画
          */
-         case HoldAndStretch
+        case HoldAndStretch
         /**
          *  页面滑动时 , 上部画面的位移与下部页面一致 , 即页面同步
          */
@@ -78,9 +83,9 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     
     enum StretchType {
         /// 同比例缩放
-        case SameRate
-        /// 宽度方向不缩放
-        case Equal
+        case StretchSameRate
+        /// 方形缩放
+        case StretchEqual
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,11 +97,6 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
         super.init(frame: frame, style: .Plain)
         self.delegate = self
         self.clipsToBounds = false
-    }
-    
-    func addContentView(view:UIView) {
-        view.frame = CGRectMake(view.frame.origin.x, settingInfo.headerViewActualHeight - view.frame.height, view.frame.width, view.frame.height)
-        self.addSubview(view)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -127,7 +127,7 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
         if contentOffSetY <= -settingInfo.headerViewHiddenHeight * 2.0  {
             let actualOffSetY = -contentOffSetY - settingInfo.headerViewHiddenHeight * 2
             var actualOffSetX:CGFloat = 0
-            if settingInfo.stretchType == .Equal {
+            if settingInfo.stretchType == .StretchEqual {
                 actualOffSetX = 0
             } else {
                 actualOffSetX = actualOffSetY * originWidth / originHeight
@@ -138,7 +138,6 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     
     func headerAnimationHold(contentOffSetY:CGFloat) {
         if contentOffSetY < settingInfo.headerViewActualHeight && contentOffSetY > 0 {
-            //保持不动
             topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight + contentOffSetY, topView!.frame.width, (topView?.frame.height)!)
         } else if contentOffSetY <= 0 && contentOffSetY >= -settingInfo.headerViewHiddenHeight * 2.0 {
             topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight + contentOffSetY / 2.0, self.originWidth, self.originHeight)
@@ -148,16 +147,20 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     func headerAnimationHoldAndStretch(contentOffSetY:CGFloat) {
         self.headerAnimationHold(contentOffSetY)
         if contentOffSetY <= -settingInfo.headerViewHiddenHeight * 2.0 {
-            //减去隐藏高度算出实际y轴偏移量
             let actualOffSetY = -contentOffSetY - settingInfo.headerViewHiddenHeight * 2
             var actualOffSetX:CGFloat = 0
-            if settingInfo.stretchType == .Equal {
+            if settingInfo.stretchType == .StretchEqual {
                 actualOffSetX = 0
             } else {
                 actualOffSetX = actualOffSetY * originWidth / originHeight
             }
-            //根据偏移量计算新的frame
             self.topView?.frame = CGRectMake(-actualOffSetX / 2.0, contentOffSetY, self.originWidth + actualOffSetX, self.originHeight + actualOffSetY)
         }
+        
+    }
+    
+    func addContentView(view:UIView) {
+        view.frame = CGRectMake(view.frame.origin.x, settingInfo.headerViewActualHeight - view.frame.height, view.frame.width, view.frame.height)
+        self.addSubview(view)
     }
 }
