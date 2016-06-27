@@ -14,32 +14,31 @@ let cellIdentify:String = "cellIdentify"
 class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
 
-    var mainScrollView:PanAnimationTableView!
-    var topImageView:UIImageView = UIImageView.init(image: UIImage.init(named: "ComicPicture4"))
-    var bottomTableView:UITableView = UITableView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), style: UITableViewStyle.Plain)
+    private var mainTableView:PanAnimationTableView!
     
-    var selectBtn:UIButton!
+    private var selectBtn:UIButton!
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.grayColor()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
-        mainScrollView = PanAnimationTableView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, self.view.frame.height), style: UITableViewStyle.Plain)
-        mainScrollView.reachbottomClosure = reachBottom
-        mainScrollView.settingInfo.followAnimationType = .TopViewAnimationTypeHoldAndStretch
-        mainScrollView.settingInfo.headerViewActualHeight = 240
-        mainScrollView.settingInfo.headerViewHiddenHeight = 20
+        mainTableView = PanAnimationTableView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, self.view.frame.height), style: UITableViewStyle.Plain)
+        mainTableView.reachbottomClosure = reachBottom
+        
+        mainTableView.settingInfo.followAnimationType = .HoldAndStretch
+        mainTableView.settingInfo.headerViewActualHeight = 240
+        mainTableView.settingInfo.headerViewHiddenHeight = 20
         
         let imageView = UIImageView.init(image: UIImage.init(named: "ComicPicture3"))
         imageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0)
-        mainScrollView.topView = imageView
+        mainTableView.topView = imageView
         
         self.setContentView()
         
         
-        mainScrollView.delegate = self
-        mainScrollView.dataSource = self
-        self.view.addSubview(mainScrollView)
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        self.view.addSubview(mainTableView)
     }
     
     func setContentView() {
@@ -48,7 +47,8 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         let bgView = UIView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, height))
         bgView.backgroundColor = UIColor.darkGrayColor()
         bgView.alpha = 0.7
-        mainScrollView.addContentView(bgView)
+        
+        mainTableView.addContentView(bgView)
         
         let follow = UIButton.init(frame: CGRectMake(0, 0, eachWidth, height))
         follow.setTitle("Follow", forState: .Normal)
@@ -85,28 +85,28 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
-        mainScrollView.settingInfo.followAnimationType = .TopViewAnimationTypeFollow
+        mainTableView.settingInfo.followAnimationType = .Follow
     }
     
     func followAndStretchAction(btn:UIButton) {
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
-        mainScrollView.settingInfo.followAnimationType = .TopViewAnimationTypeFollowAndStretch
+        mainTableView.settingInfo.followAnimationType = .FollowAndStretch
     }
     
     func holdAction(btn:UIButton) {
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
-        mainScrollView.settingInfo.followAnimationType = .TopViewAnimationTypeHold
+        mainTableView.settingInfo.followAnimationType = .Hold
     }
     
     func holdAndStretchAction(btn:UIButton) {
         selectBtn.selected = false
         btn.selected = !btn.selected
         selectBtn = btn
-        mainScrollView.settingInfo.followAnimationType = .TopViewAnimationTypeHoldAndStretch
+        mainTableView.settingInfo.followAnimationType = .HoldAndStretch
     }
     
     func reachBottom(isTop:Bool) {
@@ -159,6 +159,6 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        mainScrollView.scrollViewDidScroll(mainScrollView)
+        mainTableView.scrollViewDidScroll(mainTableView)
     }
 }
