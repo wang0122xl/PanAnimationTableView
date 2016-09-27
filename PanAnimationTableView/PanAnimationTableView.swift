@@ -8,7 +8,9 @@
 
 import UIKit
 
-typealias PanTableViewReachTopViewBottomClosure = (isTopDirection:Bool) -> Void
+
+
+typealias PanTableViewReachTopViewBottomClosure = (_ isTopDirection:Bool) -> Void
 
 class PanAnimationTableView: UITableView , UITableViewDelegate {
     /// 保存上次的contentOffSetY值 , 用于判断滚动方向
@@ -26,15 +28,15 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     var topView:UIView? {
         didSet {
             
-            let view = UIView.init(frame: CGRectMake(0, 0, self.frame.width, settingInfo.headerViewActualHeight))
+            let view = UIView.init(frame: CGRect.init(x:0, y:0, width:self.frame.width, height:settingInfo.headerViewActualHeight))
             view.alpha = 0
             self.tableHeaderView = view
             
             originWidth = topView?.frame.width
-            topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight, originWidth, settingInfo.headerViewHiddenHeight * 2 + settingInfo.headerViewActualHeight)
+            topView?.frame = CGRect.init(x:0, y:-settingInfo.headerViewHiddenHeight, width:originWidth, height:settingInfo.headerViewHiddenHeight * 2 + settingInfo.headerViewActualHeight)
             originHeight = topView?.frame.height
             
-            self.insertSubview(topView!, atIndex: 0)
+            self.insertSubview(topView!, at: 0)
             settingInfo.headerViewActualHeight = originHeight - settingInfo.headerViewHiddenHeight*2.0
         }
     }
@@ -94,22 +96,22 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     }
     
     override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: .Plain)
+        super.init(frame: frame, style: .plain)
         self.delegate = self
         self.clipsToBounds = false
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         switch settingInfo.followAnimationType {
-        case .Follow : self.headerAnimationFollow(scrollView.contentOffset.y)
-        case .Hold : self.headerAnimationHold(scrollView.contentOffset.y)
-        case .HoldAndStretch : self.headerAnimationHoldAndStretch(scrollView.contentOffset.y)
-        case .FollowAndStretch : self.headerAnimationFollowAndStretch(scrollView.contentOffset.y)
+        case .Follow : self.headerAnimationFollow(contentOffSetY: scrollView.contentOffset.y)
+        case .Hold : self.headerAnimationHold(contentOffSetY: scrollView.contentOffset.y)
+        case .HoldAndStretch : self.headerAnimationHoldAndStretch(contentOffSetY: scrollView.contentOffset.y)
+        case .FollowAndStretch : self.headerAnimationFollowAndStretch(contentOffSetY: scrollView.contentOffset.y)
         }
         // 判断是否滚动到上方view的最下部
         if abs(scrollView.contentOffset.y - settingInfo.headerViewActualHeight) < 20 {
             if reachbottomClosure != nil {
-                reachbottomClosure!(isTopDirection: scrollView.contentOffset.y > previousContentOffSetY)
+                reachbottomClosure!(scrollView.contentOffset.y > previousContentOffSetY)
             }
         }
         previousContentOffSetY = scrollView.contentOffset.y
@@ -118,12 +120,13 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
     // 不同的animationType作不同的动画处理
     func headerAnimationFollow(contentOffSetY:CGFloat) {
         if contentOffSetY <= 0 && contentOffSetY >= -settingInfo.headerViewHiddenHeight * 2.0 {
-            topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight + contentOffSetY / 2.0, self.originWidth, self.originHeight)
+            topView?.frame = CGRect.init(x:0, y:-settingInfo.headerViewHiddenHeight + contentOffSetY / 2.0, width:self.originWidth, height:self.originHeight)
+            
         }
     }
     
     func headerAnimationFollowAndStretch(contentOffSetY:CGFloat) {
-        self.headerAnimationFollow(contentOffSetY)
+        self.headerAnimationFollow(contentOffSetY: contentOffSetY)
         if contentOffSetY <= -settingInfo.headerViewHiddenHeight * 2.0  {
             let actualOffSetY = -contentOffSetY - settingInfo.headerViewHiddenHeight * 2
             var actualOffSetX:CGFloat = 0
@@ -132,20 +135,20 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
             } else {
                 actualOffSetX = actualOffSetY * originWidth / originHeight
             }
-            self.topView?.frame = CGRectMake(-actualOffSetX / 2.0, contentOffSetY, self.originWidth + actualOffSetX, self.originHeight + actualOffSetY)
+            self.topView?.frame = CGRect.init(x:-actualOffSetX / 2.0, y:contentOffSetY, width:self.originWidth + actualOffSetX, height:self.originHeight + actualOffSetY)
         }
     }
     
     func headerAnimationHold(contentOffSetY:CGFloat) {
         if contentOffSetY < settingInfo.headerViewActualHeight && contentOffSetY > 0 {
-            topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight + contentOffSetY, topView!.frame.width, (topView?.frame.height)!)
+            topView?.frame = CGRect.init(x:0, y:-settingInfo.headerViewHiddenHeight + contentOffSetY, width:topView!.frame.width, height:(topView?.frame.height)!)
         } else if contentOffSetY <= 0 && contentOffSetY >= -settingInfo.headerViewHiddenHeight * 2.0 {
-            topView?.frame = CGRectMake(0, -settingInfo.headerViewHiddenHeight + contentOffSetY / 2.0, self.originWidth, self.originHeight)
+            topView?.frame = CGRect.init(x:0, y:-settingInfo.headerViewHiddenHeight + contentOffSetY / 2.0, width:self.originWidth, height:self.originHeight)
         }
     }
     
     func headerAnimationHoldAndStretch(contentOffSetY:CGFloat) {
-        self.headerAnimationHold(contentOffSetY)
+        self.headerAnimationHold(contentOffSetY: contentOffSetY)
         if contentOffSetY <= -settingInfo.headerViewHiddenHeight * 2.0 {
             let actualOffSetY = -contentOffSetY - settingInfo.headerViewHiddenHeight * 2
             var actualOffSetX:CGFloat = 0
@@ -154,13 +157,13 @@ class PanAnimationTableView: UITableView , UITableViewDelegate {
             } else {
                 actualOffSetX = actualOffSetY * originWidth / originHeight
             }
-            self.topView?.frame = CGRectMake(-actualOffSetX / 2.0, contentOffSetY, self.originWidth + actualOffSetX, self.originHeight + actualOffSetY)
+            self.topView?.frame = CGRect.init(x:-actualOffSetX / 2.0, y:contentOffSetY, width:self.originWidth + actualOffSetX, height:self.originHeight + actualOffSetY)
         }
         
     }
     
     func addContentView(view:UIView) {
-        view.frame = CGRectMake(view.frame.origin.x, settingInfo.headerViewActualHeight - view.frame.height, view.frame.width, view.frame.height)
+        view.frame = CGRect.init(x:view.frame.origin.x, y:settingInfo.headerViewActualHeight - view.frame.height, width:view.frame.width, height:view.frame.height)
         self.addSubview(view)
     }
 }

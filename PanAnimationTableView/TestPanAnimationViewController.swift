@@ -14,15 +14,16 @@ let cellIdentify:String = "cellIdentify"
 class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
 
+
     private var mainTableView:PanAnimationTableView!
     
     private var selectBtn:UIButton!
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor.gray
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
-        mainTableView = PanAnimationTableView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, self.view.frame.height), style: UITableViewStyle.Plain)
+        mainTableView = PanAnimationTableView.init(frame: CGRect.init(x:0, y:0, width:SCREEN_WIDTH, height:self.view.frame.height), style: UITableViewStyle.plain)
         mainTableView.reachbottomClosure = reachBottom
         
         mainTableView.settingInfo.followAnimationType = .HoldAndStretch
@@ -30,7 +31,7 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         mainTableView.settingInfo.headerViewHiddenHeight = 20
         
         let imageView = UIImageView.init(image: UIImage.init(named: "ComicPicture3"))
-        imageView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0)
+        imageView.frame = CGRect.init(x:0, y:0, width:SCREEN_WIDTH, height:0)
         mainTableView.topView = imageView
         
         self.setContentView()
@@ -44,68 +45,68 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
     func setContentView() {
         let height:CGFloat = 44
         let eachWidth:CGFloat = SCREEN_WIDTH / 4.0
-        let bgView = UIView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, height))
-        bgView.backgroundColor = UIColor.darkGrayColor()
+        let bgView = UIView.init(frame: CGRect.init(x:0, y:0, width:SCREEN_WIDTH, height:height))
+        bgView.backgroundColor = UIColor.darkGray
         bgView.alpha = 0.7
         
-        mainTableView.addContentView(bgView)
+        mainTableView.addContentView(view: bgView)
         
-        let follow = UIButton.init(frame: CGRectMake(0, 0, eachWidth, height))
-        follow.setTitle("Follow", forState: .Normal)
-        follow.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        follow.setTitleColor(UIColor.orangeColor(), forState: .Selected)
-        follow.addTarget(self, action: #selector(followAction), forControlEvents: .TouchUpInside)
+        let follow = UIButton.init(frame: CGRect.init(x:0, y:0, width:eachWidth, height:height))
+        follow.setTitle("Follow", for: .normal)
+        follow.setTitleColor(UIColor.white, for: .normal)
+        follow.setTitleColor(UIColor.orange, for: .selected)
+        follow.addTarget(self, action: #selector(followAction), for: .touchUpInside)
         bgView.addSubview(follow)
         
-        let followAndStretch = UIButton.init(frame: CGRectMake(eachWidth, 0, eachWidth, height))
-        followAndStretch.setTitle("FollowAndStretch", forState: .Normal)
-        followAndStretch.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        followAndStretch.setTitleColor(UIColor.orangeColor(), forState: .Selected)
-        followAndStretch.addTarget(self, action: #selector(followAndStretchAction), forControlEvents: .TouchUpInside)
+        let followAndStretch = UIButton.init(frame: CGRect.init(x:eachWidth, y:0, width:eachWidth, height:height))
+        followAndStretch.setTitle("FollowAndStretch", for: .normal)
+        followAndStretch.setTitleColor(UIColor.white, for: .normal)
+        followAndStretch.setTitleColor(UIColor.orange, for: .selected)
+        followAndStretch.addTarget(self, action: #selector(followAndStretchAction), for: .touchUpInside)
         bgView.addSubview(followAndStretch)
         
-        let hold = UIButton.init(frame: CGRectMake(eachWidth * 2, 0, eachWidth, height))
-        hold.setTitle("Hold", forState: .Normal)
-        hold.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        hold.setTitleColor(UIColor.orangeColor(), forState: .Selected)
-        hold.addTarget(self, action: #selector(holdAction), forControlEvents: .TouchUpInside)
+        let hold = UIButton.init(frame: CGRect.init(x:eachWidth * 2, y:0, width:eachWidth, height:height))
+        hold.setTitle("Hold", for: .normal)
+        hold.setTitleColor(UIColor.white, for: .normal)
+        hold.setTitleColor(UIColor.orange, for: .selected)
+        hold.addTarget(self, action: #selector(holdAction), for: .touchUpInside)
         bgView.addSubview(hold)
         
-        let holdAndStretch = UIButton.init(frame: CGRectMake(eachWidth * 3, 0, eachWidth, height))
-        holdAndStretch.setTitle("HoldAndStretch", forState: .Normal)
-        holdAndStretch.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        holdAndStretch.setTitleColor(UIColor.orangeColor(), forState: .Selected)
-        holdAndStretch.addTarget(self, action: #selector(holdAndStretchAction), forControlEvents: .TouchUpInside)
+        let holdAndStretch = UIButton.init(frame: CGRect.init(x:eachWidth * 3, y:0, width:eachWidth, height:height))
+        holdAndStretch.setTitle("HoldAndStretch", for: .normal)
+        holdAndStretch.setTitleColor(UIColor.white, for: .normal)
+        holdAndStretch.setTitleColor(UIColor.orange, for: .selected)
+        holdAndStretch.addTarget(self, action: #selector(holdAndStretchAction), for: .touchUpInside)
         selectBtn = holdAndStretch
-        selectBtn.selected = true
+        selectBtn.isSelected = true
         bgView.addSubview(holdAndStretch)
     }
     
     func followAction(btn:UIButton) {
-        selectBtn.selected = false
-        btn.selected = !btn.selected
+        selectBtn.isSelected = false
+        btn.isSelected = !btn.isSelected
         selectBtn = btn
         mainTableView.settingInfo.followAnimationType = .Follow
     }
     
     func followAndStretchAction(btn:UIButton) {
-        selectBtn.selected = false
-        btn.selected = !btn.selected
+        selectBtn.isSelected = false
+        btn.isSelected = !btn.isSelected
         selectBtn = btn
         mainTableView.settingInfo.stretchType = .StretchEqual
         mainTableView.settingInfo.followAnimationType = .FollowAndStretch
     }
     
     func holdAction(btn:UIButton) {
-        selectBtn.selected = false
-        btn.selected = !btn.selected
+        selectBtn.isSelected = false
+        btn.isSelected = !btn.isSelected
         selectBtn = btn
         mainTableView.settingInfo.followAnimationType = .Hold
     }
     
     func holdAndStretchAction(btn:UIButton) {
-        selectBtn.selected = false
-        btn.selected = !btn.selected
+        selectBtn.isSelected = false
+        btn.isSelected = !btn.isSelected
         selectBtn = btn
         mainTableView.settingInfo.stretchType = .StretchSameRate
         mainTableView.settingInfo.followAnimationType = .HoldAndStretch
@@ -119,48 +120,48 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         }
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let imageView = UIImageView.init(image: UIImage.init(named: "ComicPicture2"))
         
         
         return imageView
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 120
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentify)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentify)
         if cell == nil {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentify)
+            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentify)
             
             switch indexPath.row % 7 {
-            case 0 : cell!.backgroundColor = UIColor.blueColor()
-            case 1 : cell!.backgroundColor = UIColor.greenColor()
-            case 2 : cell!.backgroundColor = UIColor.redColor()
-            case 3 : cell!.backgroundColor = UIColor.yellowColor()
-            case 5 : cell!.backgroundColor = UIColor.purpleColor()
-            case 6 : cell!.backgroundColor = UIColor.orangeColor()
-            default : cell!.backgroundColor = UIColor.lightGrayColor()
+            case 0 : cell!.backgroundColor = UIColor.blue
+            case 1 : cell!.backgroundColor = UIColor.green
+            case 2 : cell!.backgroundColor = UIColor.red
+            case 3 : cell!.backgroundColor = UIColor.yellow
+            case 5 : cell!.backgroundColor = UIColor.purple
+            case 6 : cell!.backgroundColor = UIColor.orange
+            default : cell!.backgroundColor = UIColor.lightGray
             }
         }
         return cell!
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 30
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         mainTableView.scrollViewDidScroll(mainTableView)
     }
 }

@@ -12,20 +12,9 @@
 		04C82DE71D2104EB0022B172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DE51D2104EB0022B172 /* Main.storyboard */; };
 		04C82DE91D2104EB0022B172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DE81D2104EB0022B172 /* Assets.xcassets */; };
 		04C82DEC1D2104EB0022B172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DEA1D2104EB0022B172 /* LaunchScreen.storyboard */; };
-		04C82DF71D2104EB0022B172 /* PanAnimationTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82DF61D2104EB0022B172 /* PanAnimationTableViewUITests.swift */; };
 		04C82E071D2105130022B172 /* PanAnimationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82E051D2105130022B172 /* PanAnimationTableView.swift */; };
 		04C82E081D2105130022B172 /* TestPanAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82E061D2105130022B172 /* TestPanAnimationViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		04C82DF31D2104EB0022B172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C82DD61D2104EB0022B172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04C82DDD1D2104EB0022B172;
-			remoteInfo = PanAnimationTableView;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04C82DDE1D2104EB0022B172 /* PanAnimationTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanAnimationTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +24,6 @@
 		04C82DE81D2104EB0022B172 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C82DEB1D2104EB0022B172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C82DED1D2104EB0022B172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04C82DF21D2104EB0022B172 /* PanAnimationTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PanAnimationTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C82DF61D2104EB0022B172 /* PanAnimationTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanAnimationTableViewUITests.swift; sourceTree = "<group>"; };
 		04C82DF81D2104EB0022B172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C82E051D2105130022B172 /* PanAnimationTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanAnimationTableView.swift; sourceTree = "<group>"; };
@@ -44,13 +32,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		04C82DDB1D2104EB0022B172 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C82DEF1D2104EB0022B172 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				04C82DDE1D2104EB0022B172 /* PanAnimationTableView.app */,
-				04C82DF21D2104EB0022B172 /* PanAnimationTableViewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,24 +102,6 @@
 			productReference = 04C82DDE1D2104EB0022B172 /* PanAnimationTableView.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04C82DF11D2104EB0022B172 /* PanAnimationTableViewUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04C82DFE1D2104EB0022B172 /* Build configuration list for PBXNativeTarget "PanAnimationTableViewUITests" */;
-			buildPhases = (
-				04C82DEE1D2104EB0022B172 /* Sources */,
-				04C82DEF1D2104EB0022B172 /* Frameworks */,
-				04C82DF01D2104EB0022B172 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04C82DF41D2104EB0022B172 /* PBXTargetDependency */,
-			);
-			name = PanAnimationTableViewUITests;
-			productName = PanAnimationTableViewUITests;
-			productReference = 04C82DF21D2104EB0022B172 /* PanAnimationTableViewUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -147,15 +109,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = jason.wang;
 				TargetAttributes = {
 					04C82DDD1D2104EB0022B172 = {
 						CreatedOnToolsVersion = 7.3.1;
-					};
-					04C82DF11D2104EB0022B172 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 04C82DDD1D2104EB0022B172;
+						DevelopmentTeam = W9LJWVEKU4;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -173,7 +133,6 @@
 			projectRoot = "";
 			targets = (
 				04C82DDD1D2104EB0022B172 /* PanAnimationTableView */,
-				04C82DF11D2104EB0022B172 /* PanAnimationTableViewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -186,13 +145,6 @@
 				04C82DEC1D2104EB0022B172 /* LaunchScreen.storyboard in Resources */,
 				04C82DE91D2104EB0022B172 /* Assets.xcassets in Resources */,
 				04C82DE71D2104EB0022B172 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		04C82DF01D2104EB0022B172 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,23 +162,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04C82DEE1D2104EB0022B172 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04C82DF71D2104EB0022B172 /* PanAnimationTableViewUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		04C82DF41D2104EB0022B172 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 04C82DDD1D2104EB0022B172 /* PanAnimationTableView */;
-			targetProxy = 04C82DF31D2104EB0022B172 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		04C82DE51D2104EB0022B172 /* Main.storyboard */ = {
@@ -262,8 +198,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -307,8 +245,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -327,6 +267,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -335,10 +276,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W9LJWVEKU4;
 				INFOPLIST_FILE = PanAnimationTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bizfocus.test.PanAnimationTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -346,32 +289,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W9LJWVEKU4;
 				INFOPLIST_FILE = PanAnimationTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bizfocus.test.PanAnimationTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		04C82DFF1D2104EB0022B172 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PanAnimationTableViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.bizfocus.test.PanAnimationTableViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PanAnimationTableView;
-			};
-			name = Debug;
-		};
-		04C82E001D2104EB0022B172 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PanAnimationTableViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.bizfocus.test.PanAnimationTableViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PanAnimationTableView;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -394,14 +317,7 @@
 				04C82DFD1D2104EB0022B172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		04C82DFE1D2104EB0022B172 /* Build configuration list for PBXNativeTarget "PanAnimationTableViewUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04C82DFF1D2104EB0022B172 /* Debug */,
-				04C82E001D2104EB0022B172 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

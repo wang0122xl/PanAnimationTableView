@@ -8,14 +8,15 @@
 
 import UIKit
 
-var SCREEN_WIDTH:CGFloat = UIScreen.mainScreen().bounds.width
-var SCREEN_HEIGHT:CGFloat = UIScreen.mainScreen().bounds.height
+var SCREEN_WIDTH:CGFloat = UIScreen.main.bounds.width
+var SCREEN_HEIGHT:CGFloat = UIScreen.main.bounds.height
+
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
 
         self.navigationController?.pushViewController(TestPanAnimationViewController(), animated: true)
         // Do any additional setup after loading the view, typically from a nib.
