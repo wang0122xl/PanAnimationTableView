@@ -56,19 +56,22 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         
         let follow = UIButton.init(frame: CGRect.init(x:0, y:0, width:eachWidth, height:height))
         follow.setTitle("Follow", for: .normal)
+        follow.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         follow.setTitleColor(UIColor.white, for: .normal)
         follow.setTitleColor(UIColor.orange, for: .selected)
         follow.addTarget(self, action: #selector(followAction), for: .touchUpInside)
         bgView.addSubview(follow)
         
         let followAndStretch = UIButton.init(frame: CGRect.init(x:eachWidth, y:0, width:eachWidth, height:height))
-        followAndStretch.setTitle("FollowAndStretch", for: .normal)
+        followAndStretch.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        followAndStretch.setTitle("Follow&Stretch", for: .normal)
         followAndStretch.setTitleColor(UIColor.white, for: .normal)
         followAndStretch.setTitleColor(UIColor.orange, for: .selected)
         followAndStretch.addTarget(self, action: #selector(followAndStretchAction), for: .touchUpInside)
         bgView.addSubview(followAndStretch)
         
         let hold = UIButton.init(frame: CGRect.init(x:eachWidth * 2, y:0, width:eachWidth, height:height))
+        hold.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         hold.setTitle("Hold", for: .normal)
         hold.setTitleColor(UIColor.white, for: .normal)
         hold.setTitleColor(UIColor.orange, for: .selected)
@@ -76,7 +79,8 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
         bgView.addSubview(hold)
         
         let holdAndStretch = UIButton.init(frame: CGRect.init(x:eachWidth * 3, y:0, width:eachWidth, height:height))
-        holdAndStretch.setTitle("HoldAndStretch", for: .normal)
+        holdAndStretch.setTitle("Hold&Stretch", for: .normal)
+        holdAndStretch.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         holdAndStretch.setTitleColor(UIColor.white, for: .normal)
         holdAndStretch.setTitleColor(UIColor.orange, for: .selected)
         holdAndStretch.addTarget(self, action: #selector(holdAndStretchAction), for: .touchUpInside)
