@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04C82DE21D2104EB0022B172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82DE11D2104EB0022B172 /* AppDelegate.swift */; };
-		04C82DE41D2104EB0022B172 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82DE31D2104EB0022B172 /* ViewController.swift */; };
-		04C82DE71D2104EB0022B172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DE51D2104EB0022B172 /* Main.storyboard */; };
 		04C82DE91D2104EB0022B172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DE81D2104EB0022B172 /* Assets.xcassets */; };
-		04C82DEC1D2104EB0022B172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C82DEA1D2104EB0022B172 /* LaunchScreen.storyboard */; };
 		04C82E071D2105130022B172 /* PanAnimationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82E051D2105130022B172 /* PanAnimationTableView.swift */; };
 		04C82E081D2105130022B172 /* TestPanAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82E061D2105130022B172 /* TestPanAnimationViewController.swift */; };
 /* End PBXBuildFile section */
@@ -19,10 +16,7 @@
 /* Begin PBXFileReference section */
 		04C82DDE1D2104EB0022B172 /* PanAnimationTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanAnimationTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C82DE11D2104EB0022B172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04C82DE31D2104EB0022B172 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		04C82DE61D2104EB0022B172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C82DE81D2104EB0022B172 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04C82DEB1D2104EB0022B172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C82DED1D2104EB0022B172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C82DF61D2104EB0022B172 /* PanAnimationTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanAnimationTableViewUITests.swift; sourceTree = "<group>"; };
 		04C82DF81D2104EB0022B172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,10 +58,7 @@
 				04C82E051D2105130022B172 /* PanAnimationTableView.swift */,
 				04C82E061D2105130022B172 /* TestPanAnimationViewController.swift */,
 				04C82DE11D2104EB0022B172 /* AppDelegate.swift */,
-				04C82DE31D2104EB0022B172 /* ViewController.swift */,
-				04C82DE51D2104EB0022B172 /* Main.storyboard */,
 				04C82DE81D2104EB0022B172 /* Assets.xcassets */,
-				04C82DEA1D2104EB0022B172 /* LaunchScreen.storyboard */,
 				04C82DED1D2104EB0022B172 /* Info.plist */,
 			);
 			path = PanAnimationTableView;
@@ -142,9 +133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C82DEC1D2104EB0022B172 /* LaunchScreen.storyboard in Resources */,
 				04C82DE91D2104EB0022B172 /* Assets.xcassets in Resources */,
-				04C82DE71D2104EB0022B172 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +144,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C82DE41D2104EB0022B172 /* ViewController.swift in Sources */,
 				04C82E081D2105130022B172 /* TestPanAnimationViewController.swift in Sources */,
 				04C82E071D2105130022B172 /* PanAnimationTableView.swift in Sources */,
 				04C82DE21D2104EB0022B172 /* AppDelegate.swift in Sources */,
@@ -163,25 +151,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		04C82DE51D2104EB0022B172 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04C82DE61D2104EB0022B172 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		04C82DEA1D2104EB0022B172 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04C82DEB1D2104EB0022B172 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04C82DF91D2104EB0022B172 /* Debug */ = {

@@ -14,13 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        let nav = UINavigationController.init(rootViewController: ViewController())
-        nav.navigationBar.barTintColor = UIColor.orange
-        self.window?.rootViewController = nav
+        self.window?.rootViewController = TestPanAnimationViewController()
+        self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         return true
     }

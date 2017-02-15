@@ -10,6 +10,8 @@ import UIKit
 
 let cellIdentify:String = "cellIdentify"
 
+let SCREEN_WIDTH:CGFloat = UIScreen.main.bounds.width
+let SCREEN_HEIGHT:CGFloat = UIScreen.main.bounds.height
 
 class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -21,14 +23,15 @@ class TestPanAnimationViewController: UIViewController,UITableViewDelegate,UITab
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.gray
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.title = "PanAnimationTableView"
 
         mainTableView = PanAnimationTableView.init(frame: CGRect.init(x:0, y:0, width:SCREEN_WIDTH, height:self.view.frame.height), style: UITableViewStyle.plain)
         mainTableView.reachbottomClosure = reachBottom
         
         mainTableView.settingInfo.followAnimationType = .HoldAndStretch
-        mainTableView.settingInfo.headerViewActualHeight = 240
-        mainTableView.settingInfo.headerViewHiddenHeight = 20
+        mainTableView.settingInfo.headerViewActualHeight = 230
+        mainTableView.settingInfo.headerViewHiddenHeight = 25
+        mainTableView.tableFooterView = UIView.init()
         
         let imageView = UIImageView.init(image: UIImage.init(named: "ComicPicture3"))
         imageView.frame = CGRect.init(x:0, y:0, width:SCREEN_WIDTH, height:0)
